@@ -1,9 +1,11 @@
 package screenmatch.model;
 
-public class Movie {
+import screenmatch.computations.Classifiable;
 
-    private String movieName;
-    private int movieYear;
+public class Title implements Classifiable {
+
+    private String Name;
+    private int Year;
     private float SumOfRatings;
     private int ratingTotal;
     private  int durationInMinutes;
@@ -14,12 +16,12 @@ public class Movie {
         return durationInMinutes;
     }
 
-    public String getMovieName() {
-        return movieName;
+    public String getName() {
+        return Name;
     }
 
-    public int getMovieYear() {
-        return movieYear;
+    public int getYear() {
+        return Year;
     }
 
     public int getRatingTotal() {
@@ -32,12 +34,12 @@ public class Movie {
 
     // ---------------------- SETTERS ----------------------
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public void setMovieYear(int movieYear) {
-        this.movieYear = movieYear;
+    public void setYear(int Year) {
+        this.Year = Year;
     }
 
     public void setDurationInMinutes(int durationInMinutes) {
@@ -45,9 +47,9 @@ public class Movie {
     }
 
     public void ShowTechnicalSpecifications (){
-        System.out.println("Name of the movie: " + movieName);
-        System.out.println("   Year of the movie: " + movieYear);
-        System.out.println("  Minutes in the movie: " + durationInMinutes);
+        System.out.println("Name: " + Name);
+        System.out.println("   Year: " + Year);
+        System.out.println("  Minutes: " + getDurationInMinutes());
     }
 
     public void evaluates(float rating){
@@ -57,6 +59,11 @@ public class Movie {
 
     public double averageRating(){
         return (SumOfRatings/ratingTotal);
+    }
+
+    @Override
+    public int getClassifiable() {
+        return (int) averageRating() /2;
     }
 
 }
